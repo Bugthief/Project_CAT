@@ -1,2 +1,2 @@
 # Project_CAT
-A cat game.
+A cat game of ours.
