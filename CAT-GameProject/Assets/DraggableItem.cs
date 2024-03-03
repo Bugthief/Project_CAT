@@ -5,22 +5,24 @@ using UnityEngine.EventSystems;
 
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    // 
+    Transform parentAfterDrag;
+
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Begin Drag");
-        // throw new System.NotImplementedException();
+        parentAfterDrag = transform.parent;
+        transform.SetParent(transform.root);
+        transform.SetAsLastSibling();
+        
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("Dragging");
-        // throw new System.NotImplementedException();
+        transform.position = Input.mousePosition;
+        
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("End Drag");
-        // throw new System.NotImplementedException();
+        transform.SetParent(parentAfterDrag);
     }
 }
